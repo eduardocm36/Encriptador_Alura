@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@500&family=Play:wght@400;700&family=Raleway:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <img src="img/Vector.png" alt="" />
+    </header>
+    <div class="container">
+      <div class="container_input">
+        <!-- <div class="header">
+          <img src="img/Vector.png" alt="" />
+        </div> -->
+        <div class="container_input_b">
+          <textarea
+            name=""
+            id="ingresado"
+            placeholder="Ingrese el texto aquí"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <!-- <input id="ingresado" type="text" /> -->
+          <div>
+            <img src="img/warning.png" alt="" /><small
+              >Solo letras minúsculas y sin acentos.</small
+            >
+          </div>
+          <div class="buttons">
+            <button class="b_encriptar" onclick="encriptar()">Encriptar</button>
+            <button class="b_desencriptar" onclick="desencriptar()">
+              Desencriptar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="container_output">
+        <div class="c_encriptado">
+          <div id="encriptado">
+            <strong>Ningún mensaje fue encontrado</strong> Ingrese el texto que
+            desees encriptar o desencriptar
+          </div>
+          <button onclick="copiar()">Copiar</button>
+        </div>
+      </div>
+    </div> 
+
+    <script src="main.js"></script>
+  </body>
+</html>
