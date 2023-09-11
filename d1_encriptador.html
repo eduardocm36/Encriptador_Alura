@@ -9,50 +9,60 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@500&family=Play:wght@400;700&family=Raleway:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn-hoverme.netlify.app/hoverme/1.0.4/hoverme.css"/>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <img src="img/Vector.png" alt="" />
-    </header>
     <div class="container">
-      <div class="container_input">
-        <!-- <div class="header">
-          <img src="img/Vector.png" alt="" />
-        </div> -->
-        <div class="container_input_b">
-          <textarea
-            name=""
-            id="ingresado"
-            placeholder="Ingrese el texto aquí"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <!-- <input id="ingresado" type="text" /> -->
-          <div>
-            <img src="img/warning.png" alt="" /><small
-              >Solo letras minúsculas y sin acentos.</small
-            >
+      <div class="header">
+        <h1 class="image"><img src="img/Vector.png" alt="" /></h1>
+      </div>
+      <section class="container_input">
+        <textarea
+          class="input__text"
+          id="ingresado"
+          placeholder="Ingrese el texto aquí"
+          cols="30"
+          rows="10"
+        ></textarea>
+        <div class="input_footer">
+          <div class="input_description">
+            <small>Solo letras minúsculas y sin acentos.</small>
           </div>
           <div class="buttons">
-            <button class="b_encriptar" onclick="encriptar()">Encriptar</button>
-            <button class="b_desencriptar" onclick="desencriptar()">
+            <button class="button b_encriptar act-wobble-vertical" id="encriptar">Encriptar</button>
+            <button class="button b_desencriptar act-wobble-vertical" id="desencriptar">
               Desencriptar
             </button>
           </div>
         </div>
-      </div>
-      <div class="container_output">
-        <div class="c_encriptado">
-          <div id="encriptado">
-            <strong>Ningún mensaje fue encontrado</strong> Ingrese el texto que
-            desees encriptar o desencriptar
+      </section>
+      <aside class="output">
+        <section class="container_output" id="empty_output">
+          <div class="out_cont_img">
+            <img
+              src="/img/Muñeco.svg"
+              alt="Ningun mensaje encontrado - imagen"
+            />
           </div>
-          <button onclick="copiar()">Copiar</button>
-        </div>
-      </div>
-    </div> 
-
+          <div class="primary_text primary_none">
+            <h2>Ningún mensaje fue encontrado</h2>
+            <p>Ingrese el texto que desees encriptar o desencriptar</p>
+          </div>
+        </section>
+        <section
+          class="container_output output_none output_between"
+          id="output_with_msg"
+        >
+          <div class="output_message">
+            <p class="aside__encrypt" id="output">..</p>
+          </div>
+          <button class="aside__button bubbly-button act-wobble-vertical" id="copiarMsg">
+            Copiar
+          </button>
+        </section>
+      </aside>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
