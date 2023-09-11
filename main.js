@@ -5,6 +5,7 @@ let outputInicial = document.getElementById("empty_output");
 let outpuMsg = document.getElementById("output_with_msg");
 let copiar = document.getElementById("copiarMsg");
 let output = document.getElementById("output");
+let msg = "";
 
 const llaves = {
   'e': 'enter',
@@ -21,52 +22,59 @@ const llavesReversed =  Object.keys(llaves).reduce((result, key) => {
   return result;
 }, {});
 
-function encriptarTexto (texto, llaves){
-  let newpalabra = texto.value;
+
+//FUNCION DE ENCRIPTAR Y DESENCRIPTAR
+function encrip_Desencrip (texto, llaves){
+  let newText = texto.value;
   Object.keys(llaves).forEach((element) => {
     let expReg = new RegExp(element, 'g');
-    newpalabra = newpalabra.replace(expReg, llaves[element]);
+    newText = newText.replace(expReg, llaves[element]);
   })
-  return newpalabra;
+  return newText;
 }
 
 function verifyString(texto){
   let invalid = 0;
   let newData = [...texto.value];
-  for(i = 0; i < newData.length; i++){
-    let code = newData[i].charCodeAt(0);
-    if ( !(code >= 92 && code <= 122 || code === 241) ) {
-      invalid++;
-      break;
+  if (newData.length !== 0) {
+    for(i = 0; i < newData.length; i++){
+      let code = newData[i].charCodeAt(0);
+      if ( !(code >= 92 && code <= 122 || code === 241 || code === 32) ) {
+        invalid++;
+        msg = "Solo se permiten Minusculas sin tilde";
+        break;
+      }
     }
+  } else {
+    invalid = 2;
+    msg = "No se aceptan cadenas vacías"
   }
   return invalid;
 }
 
-btnDesencriptar.addEventListener('click', () => {
+function actionSystem(finalText){
   if ( verifyString(inputText) !== 0 ){
-    alert("Solo se permiten Minusculas");
+    alert(msg);
     inputText.value = "";
   } else {
     if(outpuMsg.classList.contains('output_none')){
       outpuMsg.classList.toggle('output_none');
       outputInicial.classList.toggle('output_none');
     }
-    output.innerHTML = encriptarTexto(inputText, llaves);
+    output.innerHTML = finalText;
     inputText.value = "";
   }
+}
+
+btnDesencriptar.addEventListener('click', () => {
+  actionSystem(encrip_Desencrip(inputText, llavesReversed));
 })
 
 btnEncriptar.addEventListener('click', () => {
-  if ( verifyString(inputText) !== 0 ){
-    alert("Solo se permiten Minusculas");
-    inputText.value = "";
-  } else {
-    if(outpuMsg.classList.contains('output_none')){
-      outpuMsg.classList.toggle('output_none');
-      outputInicial.classList.toggle('output_none');
-    }
-    output.innerHTML = encriptarTexto(inputText, llaves);
-    inputText.value = "";
-  }
+  actionSystem(encrip_Desencrip(inputText, llaves));
+})
+
+copiar.addEventListener('click', () => {
+  navigator.clipboard.writeText(output.innerHTML);
+  alert("Texto copiado");
 })

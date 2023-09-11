@@ -234,6 +234,10 @@ h1, h2, p{
   height: 100%;
 }
 
+.output_message p {
+  background-color: transparent;
+}
+
 @media screen and (max-width: 1200px) {
   .container {
     width: 100%;
